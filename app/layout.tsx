@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Amarante } from "next/font/google";
+import { NavLink, Navbar } from "@/app-content/home";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const amarante = Amarante({
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -25,9 +21,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${amarante.className} antialiased`}
       >
-        {children}
+        <main>
+          <Navbar>
+            <NavLink href="\">Home</NavLink>
+            <NavLink href="\notes">Notes</NavLink>
+            <NavLink href="\stuff">Stuff</NavLink>
+            <NavLink href="\movies">Movies</NavLink>
+            <NavLink href="\music">Music</NavLink>
+          </Navbar>
+        </main>
+        <div className="flex">
+          <aside className="w-[15vw]"/>
+          {children}
+          <aside className="w-[15vw]"/>
+        </div>
       </body>
     </html>
   );

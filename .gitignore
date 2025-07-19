@@ -17,6 +17,11 @@
 /.next/
 /out/
 
+# databases
+pb_*
+drizzle/meta
+drizzle/*.sql
+
 # production
 /build
 
@@ -39,3 +44,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vscode
+.vscode
