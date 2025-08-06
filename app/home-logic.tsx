@@ -1,7 +1,7 @@
-export { NavLink, Navbar,  };
+export { NavLink, Navbar, };
 
-function NavLink({ children, href }: { children: string; href: string }) {
-    return (
+function NavLink({ title, location }: { title: string, location: string }) {
+  return (
     <div className={`
         flex-1
         border-3 text-center rounded-xl 
@@ -10,14 +10,14 @@ function NavLink({ children, href }: { children: string; href: string }) {
         hover:bg-(--bg-secondary) hover:text-(--fg-secondary) 
         p-2 m-2 mt-0
         `}>
-        <a href={href} >
-        <p >{children}</p >
-        </a>
+      <a href={location} >
+        <p>{title}</p>
+      </a>
     </div>
-    );
+  );
 }
 
 function Navbar({ children }: { children: React.ReactNode }) {
-    return <nav className="flex">{children}</nav>;
+  return <nav className="flex">{children}</nav>;
 }
 

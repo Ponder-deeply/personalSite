@@ -1,12 +1,11 @@
-import { pgTable, serial, text, boolean, timestamp} from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, boolean } from "drizzle-orm/pg-core"
+import { sql } from "drizzle-orm"
 
-export const notes = pgTable('notes', {
-    id: serial('id').primaryKey(),
-    title: text('title').notNull(),
-    content: text('content'),
-    completed: boolean('completed').default(false).notNull()
+
+
+export const notes = pgTable("notes", {
+	id: serial().primaryKey().notNull(),
+	title: text().notNull(),
+	content: text(),
+	completed: boolean().default(false).notNull(),
 });
-
-
-
-
