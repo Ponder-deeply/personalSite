@@ -1,7 +1,7 @@
 export { fetchNotes, addNote, toggleNote, deleteNote };
 export type { Note };
 
-interface Note {
+type Note = {
   id: number;
   title: string;
   content: string;
@@ -16,14 +16,14 @@ async function fetchNotes(): Promise<Note[]> {
 };
 
 // Post a Note
-const addNote = async (newNote: string[], setNewNote: (arg0: string[]) => void) => {
+const addNote = async (newNote: Note, setNewNote: (arg0: Note) => void) => {
   if (!newNote) return;
   await fetch('/api/notes', {
     method: "POST",
-    body: JSON.stringify({ title: newNote[0], content: newNote[1] }),
+    body: JSON.stringify(newNote),
     headers: { "Content-Type": "application/json" },
   });
-  setNewNote(["", ""])
+  setNewNote({} as Note)
   location.reload();
 };
 
